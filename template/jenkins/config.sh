@@ -1,7 +1,9 @@
-#-----------------------------------------------
-# Jenkins containers backup
+#---------------------------------------
+# Jenkins containers backup config
 # for - picoded/jenkins:latest
-#-----------------------------------------------
+#
+# Weekly full varient
+#---------------------------------------
 
 # Backup file name
 BACKUP_FILENAME=jenkins-backup-full.zip

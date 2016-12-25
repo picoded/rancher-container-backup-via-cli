@@ -39,13 +39,28 @@ TEMPLATE_CONFIG="";
 #
 ##############################################################################
 
+if [ -n "$1" ] ; then
+	echo ">> template requested : $1"
+	
+	if [ ! -d "${TEMPLATE_DIR}/$1" ] ; then
+		echo ">> FATAL: Template does not exists : $1";
+		exit 1;
+	fi
+	
+	TEMPLATE_MODE="$1";
+	TEMPLATE_CONFIG="${TEMPLATE_DIR}/${TEMPLATE_MODE}/config.sh";
+	APP_BACKUP_SCRIPT="${TEMPLATE_DIR}/${TEMPLATE_MODE}/backup.sh";
+	APP_RESTORE_SCRIPT="${TEMPLATE_DIR}/${TEMPLATE_MODE}/restore.sh";
+fi
+
 ##############################################################################
 #
 #  Actual build process
 #
 ##############################################################################
 
-echo "Building backup & restore scripts, using the following files as conifig";
+echo ">> Building backup & restore scripts";
+echo ">> using the following files as conifig";
 echo " Template Mode:   ${TEMPLATE_MODE}"
 echo " Core config:     ${CONFIG_CORE}";
 echo " App config:      ${CONFIG_APP}";
@@ -63,6 +78,8 @@ if [ -n "${TEMPLATE_CONFIG}" ] ; then
 	echo " Template config: ${TEMPLATE_CONFIG}";
 	cat "${TEMPLATE_CONFIG}" > "${BIN_BACKUP_SCRIPT}";
 	cat "${TEMPLATE_CONFIG}" > "${BIN_RESTORE_SCRIPT}";
+	echo "" >> "${BIN_BACKUP_SCRIPT}";
+	echo "" >> "${BIN_RESTORE_SCRIPT}";
 fi
 
 # Setup the core config

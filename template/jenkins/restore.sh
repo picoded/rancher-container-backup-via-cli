@@ -1,5 +1,5 @@
 #---------------------------------------
-# Jenkins containers backup
+# Jenkins containers restore script
 # for - picoded/jenkins:latest
 #
 # Weekly full varient
