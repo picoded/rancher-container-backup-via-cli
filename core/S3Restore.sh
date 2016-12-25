@@ -4,6 +4,9 @@
 
 echo "S3Restore - starting curl download";
 
+# remove the old backup file (if present)
+rm -f "${BACKUP_FILEPATH}";
+
 # curl working vars
 CURL_DATEVALUE=`date -R`
 CURL_RESOURCEPATH="/${S3_BUCKET}/${S3_FILEPATH}"

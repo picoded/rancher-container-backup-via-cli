@@ -13,7 +13,7 @@ BACKUP_FILEPATH=${BACKUP_WORKSPACE}/${BACKUP_FILENAME}
 S3_FILEPATH=${S3_WORKSPACE}/${BACKUP_FILENAME}
 
 #
-# Fetch dependcy commands file path (to validate)
+# Fetch dependency commands file path (to validate)
 #
 PATH_ZIP=$(which zip); 
 PATH_CURL=$(which curl);
@@ -27,12 +27,12 @@ PATH_YUM=$(which yum);
 if [ -z "$PATH_ZIP" ] || [ -z "$PATH_CURL" ] || [ -z "$PATH_OPENSSL" ] ; then
 	# apt-get found, use it
 	if [ -n "$PATH_APTGET" ] ; then
-		apt-get update;
-		apt-get install -y zip curl openssl;
+		apt-get update || true;
+		apt-get install -y zip curl openssl || true;
 	fi;
 	# yum found, use it
 	if [ -n "$PATH_APTGET" ] ; then
-		yum update;
-		yum install -y zip curl openssl;
+		yum update || true;
+		yum install -y zip curl openssl || true;
 	fi;
 fi
