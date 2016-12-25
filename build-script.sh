@@ -87,10 +87,10 @@ echo "" >> "${BIN_BACKUP_SCRIPT}";
 
 # Setup the download, then restore process
 echo 'echo "S3Restore - started restore file process"' >> "${BIN_RESTORE_SCRIPT}";
-echo "" >> "${BIN_BACKUP_SCRIPT}";
+echo "" >> "${BIN_RESTORE_SCRIPT}";
 cat "${CORE_DIR}/S3Restore.sh" >> "${BIN_RESTORE_SCRIPT}";
-echo "" >> "${BIN_BACKUP_SCRIPT}";
+echo "" >> "${BIN_RESTORE_SCRIPT}";
 cat "${APP_RESTORE_SCRIPT}" >> "${BIN_RESTORE_SCRIPT}";
-echo "" >> "${BIN_BACKUP_SCRIPT}";
+echo "" >> "${BIN_RESTORE_SCRIPT}";
 echo 'echo "S3Backup - completed restore file process"' >> "${BIN_RESTORE_SCRIPT}";
-echo "" >> "${BIN_BACKUP_SCRIPT}";
+echo "" >> "${BIN_RESTORE_SCRIPT}";
