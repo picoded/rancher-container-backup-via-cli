@@ -71,30 +71,6 @@ zip --symlinks -r jenkins-backup.zip . \
 	;
 	
 #---------------------------------------
-# Jenkins containers backup
-# picoded/jenkins:latest
-#
-# Weekly full varient
-#---------------------------------------
-cd /var/jenkins_home;       # Goes to the jenkins home
-rm -f jenkins-backup-full.zip;   # Remove the previous backup file
-
-# Build the backup file
-zip --symlinks -r jenkins-backup-full.zip . \ 
-	# Exclude the backup related files
-	-x "z" \
-	-x "S3Backup.sh" \
-	-x "S3Restore.sh" \
-	-x "S3Backup-full.sh" \
-	-x "S3Restore-full.sh" \
-	-x "jenkins-backup.zip" \
-	-x "jenkins-backup-full.zip" \
-	# Exclude only job builds
-	-x "jobs/*/workspace/*" \
-	-x "jobs/*/builds/*" \
-	;
-
-#---------------------------------------
 # Echo ending message
 #---------------------------------------
 echo "S3Backup - completed backup file process"

@@ -36,3 +36,10 @@ if [ -z "$PATH_ZIP" ] || [ -z "$PATH_CURL" ] || [ -z "$PATH_OPENSSL" ] ; then
 		yum install -y zip curl openssl || true;
 	fi;
 fi
+
+#
+# Goes to workspace dir, remove old backup,
+# Run rest of the script from there
+#
+cd "${BACKUP_WORKSPACE}";
+rm -f "${BACKUP_FILEPATH}";
