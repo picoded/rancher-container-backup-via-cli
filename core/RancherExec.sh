@@ -99,7 +99,7 @@ fi
 # Actual execution
 #
 # RANCHER_EXEC_RUN_FLAGS="--privileged -i"
-RANCHER_EXEC_RUN_FLAGS="-ti"
+RANCHER_EXEC_RUN_FLAGS="-i"
 
 # File Transfer script
 echo ">> Transfering $TARGET_SCRIPT file";
