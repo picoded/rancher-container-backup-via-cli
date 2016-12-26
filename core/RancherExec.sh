@@ -71,7 +71,7 @@ if [ -z "$TARGET_CONTAINER" ] ; then
 fi
 
 # Target script to run
-if [ "{$TARGET_MODE}" = "restore" ] ; then 
+if [ "$TARGET_MODE" = "restore" ] ; then 
 	TARGET_SCRIPT="S3Restore.sh";
 fi
 

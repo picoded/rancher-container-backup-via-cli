@@ -6,4 +6,4 @@
 #---------------------------------------
 
 # Unzip and restore
-unzip -r "${BACKUP_FILENAME}";
+unzip -ruvo "${BACKUP_FILENAME}" .;
