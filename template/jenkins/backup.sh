@@ -9,7 +9,7 @@
 #
 # Excludes the backup related files
 # Excludes job builds
-zip --symlinks -r ${BACKUP_FILENAME} . \
+zip -9 --symlinks -r ${BACKUP_FILENAME} . \
 	-x "z" \
 	-x "S3Backup.sh" \
 	-x "S3Restore.sh" \
