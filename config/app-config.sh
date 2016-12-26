@@ -23,4 +23,5 @@
 #-----------------------------------------------
 
 # S3 Filepath to upload into
-S3_WORKSPACE=backup/appname/
+# (Do not add the ending / slash)
+S3_WORKSPACE=backup/appname

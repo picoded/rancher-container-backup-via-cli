@@ -17,8 +17,8 @@ curl -X PUT -T "${BACKUP_FILEPATH}" \
 	-H "Date: ${CURL_DATEVALUE}" \
 	-H "Content-Type: ${BACKUP_FILETYPE}" \
 	-H "Authorization: AWS ${S3_KEY}:${CURL_SIGNATURE}" \
-	-H "x-amz-storage-class: ${S3_CLASS}" \
-	-H "x-amz-tagging: ${S3_TAG}" \
+	#-H "x-amz-storage-class: ${S3_CLASS}" \
+	#-H "x-amz-tagging: ${S3_TAG}" \
 	-L https://${S3_BUCKET}.${S3_HOST}/${S3_FILEPATH};
 
 echo "S3Backup - completed curl upload";
