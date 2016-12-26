@@ -81,12 +81,12 @@ fi
 
 # File Transfer script
 echo ">> Transfering $TARGET_SCRIPT file";
-cat "./bin/$TARGET_SCRIPT" | $RANCHER_CLI exec --privileged $TARGET_CONTAINER tee "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
+cat "./bin/$TARGET_SCRIPT" | $RANCHER_CLI exec --privileged -i $TARGET_CONTAINER tee "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
 
 # Setup its permission, and run it
 echo ">> Executing $TARGET_SCRIPT file";
-$RANCHER_CLI exec --privileged $TARGET_CONTAINER chmod +x "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
-$RANCHER_CLI exec --privileged $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
+$RANCHER_CLI exec --privileged -i $TARGET_CONTAINER chmod +x "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
+$RANCHER_CLI exec --privileged -i $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
 
 # Completed run sequence
 echo ">> Completed $TARGET_MODE operation"
