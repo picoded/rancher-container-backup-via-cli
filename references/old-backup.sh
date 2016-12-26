@@ -15,22 +15,6 @@
 echo "S3Backup - started backup file process"
 
 #---------------------------------------
-# JIRA containers
-# cptactionhank/atlassian-jira:7.0.5
-#---------------------------------------
-cd /var/atlassian/jira  # Goes to the target folder
-rm -f jira-backup.tar   # Remove any existing backup
-chmod -R 0777 .         # Does a permission nuke (resolve common plugin problems)
-
-# Pack the files, tar was intentionally use as JIRA package did not inclucde zip
-# Nor did it permit the easy installation of such package
-tar --exclude="./jira-backup.tar" \
-	--exclude="./S3Backup.sh" --exclude="./S3Restore.sh" \
-	--exclude="./log" --exclude="./tmp" 
-	--exclude="./export" --exclude="./caches" 
-	-cvzf "jira-backup.tar" .;
-	
-#---------------------------------------
 # Gitlab containers
 # gitlab/gitlab-ce:latest
 #---------------------------------------

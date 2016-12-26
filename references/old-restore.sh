@@ -13,13 +13,6 @@
 echo "S3Restore - started restore process"
 
 #---------------------------------------
-# JIRA container backup
-# cptactionhank/atlassian-jira:7.0.5
-#---------------------------------------
-cd /var/atlassian/jira    # Goes to the target folder
-tar -xvf jira-backup.tar; # Uncompresses the backup out
-
-#---------------------------------------
 # Gitlab containers
 # gitlab/gitlab-ce:latest
 #---------------------------------------
