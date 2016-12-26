@@ -13,4 +13,4 @@ WORKDIR="`dirname \"$0\"`"
 cd "${WORKDIR}" || exit 1
 
 # Run the built rancher script
-./bin/RancherExec.sh $1 $2
+./bin/RancherExec.sh $1 $2 >&1 2>&2 
