@@ -35,4 +35,4 @@ S3_CLASS=STANDARD_IA
 # 
 # Used mainly to help track usage billing
 #
-S3_TAG=BACKUP
+S3_TAG="type=backup"
