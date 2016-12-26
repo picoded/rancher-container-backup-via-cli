@@ -9,6 +9,6 @@ chmod -R 0777 .        # Does a permission nuke (resolve common plugin problems)
 # Nor did it permit the easy installation of such package
 tar --exclude="./${BACKUP_FILENAME}" \
 	--exclude="./S3Backup.sh" --exclude="./S3Restore.sh" \
-	--exclude="./log" --exclude="./tmp" 
-	--exclude="./export" --exclude="./caches" 
+	--exclude="./log" --exclude="./tmp" \
+	--exclude="./export" --exclude="./caches" \
 	-cvzf "jira-backup.tar" .;
