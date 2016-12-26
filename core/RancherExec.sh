@@ -9,22 +9,22 @@
 
 # The URL of the target rancher machine to use
 if [ -n "${TARGET_RANCHER_URL}" ] ; then
-	RANCHER_URL="${TARGET_RANCHER_URL}";
+	export RANCHER_URL="${TARGET_RANCHER_URL}";
 fi
 
 # rancher login access key
 if [ -n "${TARGET_RANCHER_ACCESS_KEY}" ] ; then
-	RANCHER_ACCESS_KEY="${TARGET_RANCHER_ACCESS_KEY}";
+	export RANCHER_ACCESS_KEY="${TARGET_RANCHER_ACCESS_KEY}";
 fi
 
 # rancher login secret key
 if [ -n "${TARGET_RANCHER_SECRET_KEY}" ] ; then
-	RANCHER_SECRET_KEY="${TARGET_RANCHER_SECRET_KEY}";
+	export RANCHER_SECRET_KEY="${TARGET_RANCHER_SECRET_KEY}";
 fi
 
 # target environment to use
 if [ -n "${TARGET_RANCHER_ENVIRONMENT}" ] ; then
-	RANCHER_ENVIRONMENT="${TARGET_RANCHER_ENVIRONMENT}";
+	export RANCHER_ENVIRONMENT="${TARGET_RANCHER_ENVIRONMENT}";
 fi
 
 #
