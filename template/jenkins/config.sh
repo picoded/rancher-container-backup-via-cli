@@ -17,4 +17,4 @@ BACKUP_WORKSPACE=/var/jenkins_home
 #
 # application/x-compressed-tar
 # application/x-compressed-zip
-BACKUP_FILETYPE="application/x-compressed-tar"
+BACKUP_FILETYPE="application/x-compressed-zip"
