@@ -3,6 +3,26 @@
 #---------------------------------------
 
 #
+# Install docker client if needed
+#
+if [ -z "$(which docker)" ] ; then
+	PATH_APTGET=$(which apt-get);
+	PATH_YUM=$(which yum);
+	echo ">> Docker client is missing, doing install steps (if possible)";
+	
+	# apt-get found, use it
+	if [ -n "$PATH_APTGET" ] ; then
+		apt-get update || true;
+		apt-get install -y docker.io || true;
+	fi;
+	# yum found, use it
+	if [ -n "$PATH_APTGET" ] ; then
+		yum update || true;
+		yum install -y docker || true;
+	fi;
+fi
+
+#
 # Setup target environment variable to replace
 # Ranchers default configuration (if configured)
 #
@@ -78,15 +98,17 @@ fi
 #
 # Actual execution
 #
+# RANCHER_EXEC_RUN_FLAGS="--privileged -i"
+RANCHER_EXEC_RUN_FLAGS="-i"
 
 # File Transfer script
 echo ">> Transfering $TARGET_SCRIPT file";
-cat "./bin/$TARGET_SCRIPT" | $RANCHER_CLI exec --privileged -i $TARGET_CONTAINER tee "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
+cat "./bin/$TARGET_SCRIPT" | $RANCHER_CLI exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER tee "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
 
 # Setup its permission, and run it
 echo ">> Executing $TARGET_SCRIPT file";
-$RANCHER_CLI exec --privileged -i $TARGET_CONTAINER chmod +x "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
-$RANCHER_CLI exec --privileged -i $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
+$RANCHER_CLI exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER chmod +x "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
+$RANCHER_CLI exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${TARGET_SCRIPT}";
 
 # Completed run sequence
 echo ">> Completed $TARGET_MODE operation"
