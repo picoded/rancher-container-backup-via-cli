@@ -1,5 +1,5 @@
 #-----------------------------------------------
-# Backup template script overwrites
+# Backup template script overwrite config
 #-----------------------------------------------
 
 # # Backup file name

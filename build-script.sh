@@ -18,7 +18,7 @@ CONFIG_DIR="${WORKDIR}/config"
 TEMPLATE_DIR="${WORKDIR}/template"
 
 # The config files
-CONFIG_CORE="${CONFIG_DIR}/core-config.sh";
+CONFIG_CORE="${CONFIG_DIR}/S3-config.sh";
 CONFIG_APP="${CONFIG_DIR}/app-config.sh";
 
 # The output build script
