@@ -6,15 +6,16 @@
 #---------------------------------------
 
 # Build the backup file
-zip --symlinks -r ${BACKUP_FILENAME}.zip . \ 
-	# Exclude the backup related files
+#
+# Excludes the backup related files
+# Excludes job builds
+zip --symlinks -r ${BACKUP_FILENAME} . \
 	-x "z" \
 	-x "S3Backup.sh" \
 	-x "S3Restore.sh" \
 	-x "S3Backup-*.sh" \
 	-x "S3Restore-*.sh" \
 	-x "jenkins-*.zip" \
-	# Exclude only job builds
 	-x "jobs/*/workspace/*" \
 	-x "jobs/*/builds/*" \
 	;
