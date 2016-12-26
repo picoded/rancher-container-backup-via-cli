@@ -15,7 +15,7 @@ S3_BUCKET=your-company-backups
 S3_HOST=s3-ap-southeast-1.amazonaws.com
 
 #-----------------------------------------------
-# Minor optimization tweaks
+# Minor optimization tweaks (Not working now)
 #-----------------------------------------------
 
 #
