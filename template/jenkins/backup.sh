@@ -19,3 +19,6 @@ zip -9 --symlinks -r ${BACKUP_FILENAME} . \
 	-x "jobs/*/workspace/*" \
 	-x "jobs/*/builds/*" \
 	;
+	
+# Help keep track of the output files, and help debug stuff
+ls -al;
