@@ -2,20 +2,30 @@
 # S3 Upload credentials for a bucket
 #-----------------------------------------------
 
-# S3 key used for authentication
-S3_KEY=SecretAwsS3ApiKey
-
-# S3 secret used for authentication
-S3_SECRET=SecretAwsS3ApiSecret
-
-# S3 bucket to upload into
-S3_BUCKET=your-company-backups
+#
+# Only import S3_* configuration set 
+# If its not defined externally.
+#
+# If you want to intentionally overwrite the config
+# Comment this conditional block out.
+#
+if [ -z "$S3_HOST" ]; then
 
 # S3 bucket host region to upload into
-S3_HOST=s3-ap-southeast-1.amazonaws.com
+export S3_HOST=s3-ap-southeast-1.amazonaws.com
+
+# S3 bucket to upload into
+export S3_BUCKET=your-company-backups
+
+# S3 key used for authentication
+export S3_KEY=SecretAwsS3ApiKey
+
+# S3 secret used for authentication
+export S3_SECRET=SecretAwsS3ApiSecret
 
 #-----------------------------------------------
-# Minor optimization tweaks (Not working now)
+# Minor optimization tweaks 
+# (@TODO: Not working now, to be implemented)
 #-----------------------------------------------
 
 #
@@ -28,11 +38,17 @@ S3_HOST=s3-ap-southeast-1.amazonaws.com
 # Should rarely be ever "read", and hence should result into cheaper
 # overal S3 storage cost. I hope >_>
 #
-S3_CLASS=STANDARD_IA
+# Also presumingly due to the lack of REDUCED_REDUNDANCY usage,
+# Apperantly it "lags" behind S3 price drops. Ironically making 
+# it more expensive then STANDARD during that time gap.
+#
+export S3_CLASS=STANDARD_IA
 
 #
 # S3 storage tag
 # 
 # Used mainly to help track usage billing
 #
-S3_TAG="type=backup"
+export S3_TAG="type=backup"
+
+fi
