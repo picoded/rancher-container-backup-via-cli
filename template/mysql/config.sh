@@ -3,11 +3,14 @@
 # for - mysql/mysql
 #------------------------------------------------
 
-# Backup file name
-BACKUP_FILENAME=mysql-backup.zip
+# Repositories that are dependencies
+# export BACKUP_DEPENDS=("zip","curl","openssl")
 
 # Backup workspace folder (exclude last /)
-BACKUP_WORKSPACE=/tmp
+export BACKUP_WORKSPACE=/tmp
+
+# Backup file name (before S3 rename and upload)
+export BACKUP_FILENAME=mysql-backup.zip
 
 # File type of 'BACKUP_FILEPATH', the following are examples of valid formats
 # More mime types found at : http://www.iana.org/assignments/media-types/media-types.xhtml
@@ -15,7 +18,7 @@ BACKUP_WORKSPACE=/tmp
 #
 # application/x-compressed-tar
 # application/x-compressed-zip
-BACKUP_FILETYPE="application/x-compressed-zip"
+export BACKUP_FILETYPE="application/x-compressed-zip"
 
 # Mysqldump configuration
-MYSQLDUMP_CONFIG="--opt --all-databases --skip-lock-tables"
+export MYSQLDUMP_CONFIG="--opt --all-databases --skip-lock-tables"

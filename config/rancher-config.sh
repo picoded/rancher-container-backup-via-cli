@@ -7,7 +7,7 @@
 
 #
 # Only import RANCHER_* configuration set 
-# If its not defined externally.
+# If RANCHER_URL is not defined externally.
 #
 # If you want to intentionally overwrite the config
 # Comment this conditional block out.

@@ -1,10 +1,37 @@
 #-----------------------------------------------
+# S3 Backup Workspace
+#-----------------------------------------------
+
+#
+# Only import S3_WORKSPACE configuration  
+# If its not defined externally.
+#
+# If you want to intentionally overwrite the config
+# Comment this conditional block out.
+#
+if [ -z "$S3_WORKSPACE" ]; then
+
+# S3 Filepath to upload into
+# (Do not add the ending / slash)
+S3_WORKSPACE=picoded/backup-via-cli
+
+# Optionaly you can modify the respective filename
+# Without the tar/zip suffix. Or leave it as it is.
+#
+# By default, it takes the template name.
+# Note that its tar/zip suffix is decided by the template.
+# 
+# S3_FILENAME=custom_file_name 
+
+fi
+
+#-----------------------------------------------
 # S3 Upload credentials for a bucket
 #-----------------------------------------------
 
 #
 # Only import S3_* configuration set 
-# If its not defined externally.
+# If S3_HOST is not defined externally.
 #
 # If you want to intentionally overwrite the config
 # Comment this conditional block out.
