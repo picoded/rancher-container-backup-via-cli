@@ -10,7 +10,7 @@ rm -f mysql-backup.sql;
 mysqldump -u root --password=$MYSQL_ROOT_PASSWORD $MYSQLDUMP_CONFIG -r mysql-backup.sql;
 
 # zip the sql file up
-zip -9 ${BACKUP_FILEPATH} mysql-backup.sql;
+zip -9 --verbose ${BACKUP_FILEPATH} mysql-backup.sql;
 
 # Help keep track of the output files, and help debug stuff
 ls -al;
