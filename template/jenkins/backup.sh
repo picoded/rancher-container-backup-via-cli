@@ -12,7 +12,7 @@ cd "${JENKINS_WORKSPACE}";
 #
 # Excludes the backup related files
 # Excludes job builds
-zip -9 --verbose --symlinks -r ${BACKUP_FILEPATH} ${JENKINS_WORKSPACE} \
+zip -9 --verbose --symlinks -r ${BACKUP_FILEPATH} . \
 	-x "z" \
 	-x "S3backup.sh" \
 	-x "S3restore.sh" \
