@@ -3,11 +3,18 @@
 # for - cptactionhank/atlassian-jira:7.0.5
 #------------------------------------------------
 
-# Backup file name
-BACKUP_FILENAME=jira-backup.tar
+# Repositories that are dependencies
+export BACKUP_DEPENDS=("tar" "curl" "openssl")
 
 # Backup workspace folder (exclude last /)
-BACKUP_WORKSPACE=/var/atlassian/jira
+export BACKUP_WORKSPACE="/var/atlassian/jira"
+
+# Backup file name (before S3 rename and upload)
+export BACKUP_FILEPREFIX=jira-backup
+export BACKUP_FILESUFFIX=".tar"
+
+# Backup workspace folder (exclude last /)
+export JIRA_WORKSPACE="/var/atlassian/jira"
 
 # File type of 'BACKUP_FILEPATH', the following are examples of valid formats
 # More mime types found at : http://www.iana.org/assignments/media-types/media-types.xhtml
@@ -15,4 +22,4 @@ BACKUP_WORKSPACE=/var/atlassian/jira
 #
 # application/x-compressed-tar
 # application/x-compressed-zip
-BACKUP_FILETYPE="application/x-compressed-tar"
+export BACKUP_FILETYPE="application/x-compressed-tar"
