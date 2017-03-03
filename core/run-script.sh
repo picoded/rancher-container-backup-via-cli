@@ -107,7 +107,7 @@ echo ">> Setting up script permissions";
 
 # Executing
 echo ">> Executing script file";
-./rancher.sh exec -a $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
+./rancher.sh exec -d=false $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 
 # Completed run sequence
 echo ">> Completed $TEMPLATE_MODE operation"
