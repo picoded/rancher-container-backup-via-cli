@@ -9,13 +9,11 @@
 #
 # Excludes the backup related files
 # Excludes job builds
-zip -9 --symlinks -r ${BACKUP_FILENAME} . \
+zip -9 --symlinks -r ${BACKUP_FILEPATH} ${JENKINS_WORKSPACE} \
 	-x "z" \
-	-x "S3Backup.sh" \
-	-x "S3Restore.sh" \
-	-x "S3Backup-*.sh" \
-	-x "S3Restore-*.sh" \
-	-x "jenkins-*.zip" \
+	-x "S3backup.sh" \
+	-x "S3restore.sh" \
+	-x "*.zip" \
 	-x "jobs/*/workspace/*" \
 	-x "jobs/*/builds/*" \
 	;

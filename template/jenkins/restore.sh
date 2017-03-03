@@ -6,4 +6,4 @@
 #---------------------------------------
 
 # Unzip and restore
-unzip -ruvo "${BACKUP_FILENAME}" .;
+unzip -ruvo "${BACKUP_FILEPATH}" ${JENKINS_WORKSPACE};
