@@ -110,5 +110,5 @@ echo ">> Executing script file";
 ./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 
 # Completed run sequence
-echo ">> Completed $TARGET_MODE operation"
+echo ">> Completed $TEMPLATE_MODE operation"
 echo ">>"
