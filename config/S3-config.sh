@@ -13,7 +13,7 @@ if [ -z "$S3_WORKSPACE" ]; then
 
 # S3 Filepath to upload into
 # (Do not add the ending / slash)
-S3_WORKSPACE=picoded/backup-via-cli
+export S3_WORKSPACE=picoded/backup-via-cli
 
 # Optionaly you can modify the respective filename
 # Without the tar/zip suffix. Or leave it as it is.

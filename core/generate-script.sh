@@ -63,11 +63,16 @@ fi
 ##############################################################################
 
 # Load default depency list
-BACKUP_DEPENDS=("zip","curl","openssl")
+BACKUP_DEPENDS=("zip" "curl" "openssl")
 
 # Load script config
 source "${TEMPLATE_DIR}/config.sh";
 source "${WORKDIR}/config/S3-config.sh";
+
+# Normalizing S3 file name (if not configured)
+if [ -z "$S3_FILENAME" ] ; then
+	S3_FILENAME="${TEMPLATE_NAME}${BACKUP_FILESUFFIX}"
+fi
 
 ##############################################################################
 #
@@ -96,6 +101,7 @@ RETURN_SCRIPT+="S3_BUCKET=${S3_BUCKET}${NEWLINE}";
 RETURN_SCRIPT+="S3_HOST=${S3_HOST}${NEWLINE}";
 RETURN_SCRIPT+="S3_TAG=${S3_TAG}${NEWLINE}";
 RETURN_SCRIPT+="S3_WORKSPACE=${S3_WORKSPACE}${NEWLINE}";
+RETURN_SCRIPT+="S3_FILENAME=${S3_FILENAME}${NEWLINE}";
 RETURN_SCRIPT+=$'\n';
 
 #
@@ -111,7 +117,7 @@ RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+=$'#--------------------------------------\n';
 RETURN_SCRIPT+=$'# Dependency Config \n';
 RETURN_SCRIPT+=$'#--------------------------------------\n';
-RETURN_SCRIPT+="BACKUP_DEPENDS=(${BACKUP_DEPENDS})${NEWLINE}";
+RETURN_SCRIPT+="BACKUP_DEPENDS=(${BACKUP_DEPENDS[@]})${NEWLINE}";
 RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/dependency-installer.sh)";
 
@@ -119,6 +125,29 @@ RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/dependency-installer.sh)";
 # Common script setup for both backup and restore
 #
 RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/common-prescript.sh)";
+RETURN_SCRIPT+=$'\n';
+RETURN_SCRIPT+=$'\n';
+
+#
+# Prescript
+#
+RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/${TEMPLATE_MODE}-prescript.sh)";
+RETURN_SCRIPT+=$'\n';
+RETURN_SCRIPT+=$'\n';
+
+#
+# THE SCRIPT from template
+#
+RETURN_SCRIPT+="$(<${TEMPLATE_DIR}/${TEMPLATE_MODE}.sh)";
+RETURN_SCRIPT+=$'\n';
+RETURN_SCRIPT+=$'\n';
+
+#
+# Postscript
+#
+RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/${TEMPLATE_MODE}-postscript.sh)";
+RETURN_SCRIPT+=$'\n';
+RETURN_SCRIPT+=$'\n';
 
 ##############################################################################
 #
