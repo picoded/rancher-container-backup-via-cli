@@ -85,7 +85,7 @@ NEWLINE=$'\n';
 
 # The final build script variable
 # starting prefix
-RETURN_SCRIPT="$(<${TEMPLATE_PARTS}/bash-prefix.sh)";
+RETURN_SCRIPT=`cat "${TEMPLATE_PARTS}/bash-prefix.sh"`;
 RETURN_SCRIPT+=$'\n\n';
 
 #
@@ -107,7 +107,7 @@ RETURN_SCRIPT+=$'\n';
 #
 # Template Config script parsing
 #
-RETURN_SCRIPT+="$(<${TEMPLATE_DIR}/config.sh)";
+RETURN_SCRIPT+=`cat "${TEMPLATE_DIR}/config.sh"`;
 RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+=$'\n';
 
@@ -119,33 +119,33 @@ RETURN_SCRIPT+=$'# Dependency Config \n';
 RETURN_SCRIPT+=$'#--------------------------------------\n';
 RETURN_SCRIPT+="BACKUP_DEPENDS=(${BACKUP_DEPENDS[@]})${NEWLINE}";
 RETURN_SCRIPT+=$'\n';
-RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/dependency-installer.sh)";
+RETURN_SCRIPT+=`cat "${TEMPLATE_PARTS}/dependency-installer.sh"`;
 
 #
 # Common script setup for both backup and restore
 #
-RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/common-prescript.sh)";
+RETURN_SCRIPT+=`cat "${TEMPLATE_PARTS}/common-prescript.sh"`;
 RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+=$'\n';
 
 #
 # Prescript
 #
-RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/${TEMPLATE_MODE}-prescript.sh)";
+RETURN_SCRIPT+=`cat "${TEMPLATE_PARTS}/${TEMPLATE_MODE}-prescript.sh"`;
 RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+=$'\n';
 
 #
 # THE SCRIPT from template
 #
-RETURN_SCRIPT+="$(<${TEMPLATE_DIR}/${TEMPLATE_MODE}.sh)";
+RETURN_SCRIPT+=`cat "${TEMPLATE_DIR}/${TEMPLATE_MODE}.sh"`;
 RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+=$'\n';
 
 #
 # Postscript
 #
-RETURN_SCRIPT+="$(<${TEMPLATE_PARTS}/${TEMPLATE_MODE}-postscript.sh)";
+RETURN_SCRIPT+=`cat "${TEMPLATE_PARTS}/${TEMPLATE_MODE}-postscript.sh"`;
 RETURN_SCRIPT+=$'\n';
 RETURN_SCRIPT+=$'\n';
 
