@@ -5,6 +5,9 @@
 # Weekly full varient
 #---------------------------------------
 
+# Ensure file path is jenkins workspace
+cd "${JENKINS_WORKSPACE}";
+
 # Build the backup file
 #
 # Excludes the backup related files
