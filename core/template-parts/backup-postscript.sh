@@ -14,7 +14,6 @@ CURL_SIGNATURE=`echo -en ${CURL_STRINGTOSIGN} | openssl sha1 -hmac ${S3_SECRET} 
 
 # curl execution
 curl -X PUT -T "${BACKUP_FILEPATH}" \
-	--progress-bar \
 	-H "Host: ${S3_BUCKET}.s3.amazonaws.com" \
 	-H "Date: ${CURL_DATEVALUE}" \
 	-H "Content-Type: ${BACKUP_FILETYPE}" \
