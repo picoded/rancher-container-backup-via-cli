@@ -7,7 +7,7 @@
 rm -f mysql-backup.sql;
 
 # Unzip the sql file
-unzip -ruvo "${BACKUP_FILENAME}" mysql-backup.sql;
+unzip -uo "${BACKUP_FILENAME}" mysql-backup.sql;
 
 # Restoration
 mysql -u root --password=$MYSQL_ROOT_PASSWORD -h localhost < mysql-backup.sql;

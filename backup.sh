@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Example call
+# ./backup.sh mysql stack-path/mysql-1
+
 # Get the current working directory
 WORKDIR="`dirname \"$0\"`"
 cd "${WORKDIR}" || exit 1

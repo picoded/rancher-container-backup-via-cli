@@ -20,7 +20,7 @@ curl \
 	-H "Date: ${CURL_DATEVALUE}" \
 	-H "Content-Type: ${BACKUP_FILETYPE}" \
 	-H "Authorization: AWS ${S3_KEY}:${CURL_SIGNATURE}" \
-	-o "${BACKUP_FILEPATH}"
+	-o "${BACKUP_FILEPATH}" \
 	-L https://${S3_BUCKET}.${S3_HOST}/${S3_FILEPATH};
 
 echo "S3Restore - completed curl download";
