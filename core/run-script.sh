@@ -36,7 +36,7 @@ if [ -z "${TEMPLATE_NAME}" ] ; then
 	exit 1;
 fi;
 if [ -z "${TARGET_CONTAINER}" ] ; then
-	>&2 eecho ">> FATAL: Missing TARGET_CONTAINER";
+	>&2 echo ">> FATAL: Missing TARGET_CONTAINER";
 	exit 1;
 fi;
 
