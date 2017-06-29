@@ -3,6 +3,7 @@
 #-----------------------------------------------
 PATH_APTGET=$(which apt-get);
 PATH_YUM=$(which yum);
+PATH_APK=$(which apk);
 
 echo ">>> Ensuring dependencies : ${BACKUP_DEPENDS[@]}"
 for DEP in "${BACKUP_DEPENDS[@]}"
@@ -18,6 +19,11 @@ do
 		if [ -n "$PATH_APTGET" ] ; then
 			yum update || true;
 			yum install -y ${DEP} || true;
+		fi;
+		# APK found, use it
+		if [ -n "$PATH_APK" ] ; then
+			apk update || true;
+			apk add ${DEP} || true;
 		fi;
 	fi
 done
