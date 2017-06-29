@@ -10,4 +10,4 @@ rm -f mysql-backup.sql;
 unzip -uo "${BACKUP_FILENAME}" mysql-backup.sql;
 
 # Restoration
-mysql -u $MYSQL_USER --password=$MYSQL_PASSWORD $MYSQLCLIENT_CONFIG --database $MYSQL_DATABASE -h 127.0.0.1 < mysql-backup.sql;
+mysql -h $MYSQLHOST -u $MYSQL_USER --password=$MYSQL_PASSWORD $MYSQLCLIENT_CONFIG --database $MYSQL_DATABASE < mysql-backup.sql;

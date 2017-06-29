@@ -21,6 +21,9 @@ export BACKUP_FILESUFFIX=".zip"
 # application/x-compressed-zip
 export BACKUP_FILETYPE="application/x-compressed-zip"
 
+# Hostname (for external backups)
+export MYSQLHOST="127.0.0.1"
+
 # Mysqldump configuration
 export MYSQLDUMP_CONFIG="--add-drop-table --add-locks --create-options --disable-keys --extended-insert --quick --default-character-set=utf8mb4 --set-charset --skip-lock-tables "
 export MYSQLCLIENT_CONFIG="--default-character-set=utf8mb4 "
