@@ -4,7 +4,7 @@
 #------------------------------------------------
 
 # Repositories that are dependencies
-# export BACKUP_DEPENDS=("zip","curl","openssl")
+export BACKUP_DEPENDS=("mysql" "zip" "curl" "openssl")
 
 # Backup workspace folder (exclude last /)
 export BACKUP_WORKSPACE="/tmp"

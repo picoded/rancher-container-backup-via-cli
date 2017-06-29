@@ -68,6 +68,14 @@ source ./config/S3-config.sh;
 
 ##############################################################################
 #
+#  Prepare the bash installer (for alpine mainly)
+#
+##############################################################################
+
+BASH_SETUP=`cat ./core/template-parts/bash-installer.sh`
+
+##############################################################################
+#
 #  Information logging
 #
 ##############################################################################
@@ -92,21 +100,25 @@ EXEC_SCRIPTNAME="S3${TEMPLATE_MODE}.sh"
 # RANCHER_EXEC_RUN_FLAGS="--privileged -i"
 RANCHER_EXEC_RUN_FLAGS="-i"
 
-# Migrating the backup / restore script
+# Removing any old backup/restore script
 echo ">> Removing old script files (if present)";
 ./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER rm -f "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 
-# Migrating the backup / restore script
+# Migrating the bash-installer, and backup / restore script
 echo ">> Transfering $EXEC_SCRIPTNAME script file";
+echo "${BASH_SETUP}" | ./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER tee "${BACKUP_WORKSPACE}/BashInstaller.sh";
 echo "${EXEC_SCRIPT}" | ./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER tee "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 
 # Permission setup
 echo ">> Setting up script permissions";
+./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER chmod +x "${BACKUP_WORKSPACE}/BashInstaller.sh";
+./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER chmod 0777 "${BACKUP_WORKSPACE}/BashInstaller.sh";
 ./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER chmod +x "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 ./rancher.sh exec $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER chmod 0777 "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 
 # Executing
 echo ">> Executing script file";
+./rancher.sh exec -d=false $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER "${BACKUP_WORKSPACE}/BashInstaller.sh";
 ./rancher.sh exec -d=false $RANCHER_EXEC_RUN_FLAGS $TARGET_CONTAINER "${BACKUP_WORKSPACE}/${EXEC_SCRIPTNAME}";
 
 # Completed run sequence
