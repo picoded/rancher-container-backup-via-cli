@@ -8,6 +8,7 @@ echo "S3Restore - starting curl download";
 rm -f "${BACKUP_FILEPATH}";
 
 # curl working vars
+UNIX_TIMESTAMP=`date +%s`
 CURL_DATEVALUE=`date -R`
 CURL_RESOURCEPATH="/${S3_BUCKET}/${S3_FILEPATH}"
 CURL_STRINGTOSIGN="GET\n\n${BACKUP_FILETYPE}\n${CURL_DATEVALUE}\n${CURL_RESOURCEPATH}"
@@ -21,7 +22,7 @@ curl \
 	-H "Content-Type: ${BACKUP_FILETYPE}" \
 	-H "Authorization: AWS ${S3_KEY}:${CURL_SIGNATURE}" \
 	-o "${BACKUP_FILEPATH}" \
-	-L https://${S3_BUCKET}.${S3_HOST}/${S3_FILEPATH};
+	-L "https://${S3_BUCKET}.${S3_HOST}/${S3_FILEPATH}?t=$UNIX_TIMESTAMP";
 
 echo "S3Restore - completed curl download";
 

@@ -22,5 +22,4 @@ export BACKUP_FILESUFFIX=".zip"
 export BACKUP_FILETYPE="application/x-compressed-zip"
 
 # Mysqldump configuration
-export MYSQLDUMP_CONFIG="--add-drop-table --add-locks --create-options --disable-keys --extended-insert --quick --default-character-set=utf8mb4 --set-charset --skip-lock-tables "
-export MYSQLCLIENT_CONFIG="--default-character-set=utf8mb4 "
+export MYSQLDUMP_CONFIG="--opt --all-databases --skip-lock-tables"
