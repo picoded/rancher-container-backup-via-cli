@@ -4,7 +4,7 @@
 #------------------------------------------------
 
 # Repositories that are dependencies
-export BACKUP_DEPENDS=("mysql" "zip" "curl" "openssl")
+export BACKUP_DEPENDS=("mysql-client" "zip" "curl" "openssl")
 
 # Backup workspace folder (exclude last /)
 export BACKUP_WORKSPACE="/tmp"
@@ -25,5 +25,5 @@ export BACKUP_FILETYPE="application/x-compressed-zip"
 export MYSQLHOST="127.0.0.1"
 
 # Mysqldump configuration
-export MYSQLDUMP_CONFIG="--add-drop-table --add-locks --create-options --disable-keys --extended-insert --quick --default-character-set=utf8mb4 --set-charset --skip-lock-tables "
+export MYSQLDUMP_CONFIG="--add-drop-table --add-locks --create-options --disable-keys --extended-insert --quick --default-character-set=utf8mb4 --set-charset --skip-lock-tables --no-create-db "
 export MYSQLCLIENT_CONFIG="--default-character-set=utf8mb4 "
