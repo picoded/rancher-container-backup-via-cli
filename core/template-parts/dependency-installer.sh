@@ -22,7 +22,7 @@ do
 			apt-get install -y ${DEP} || true;
 		fi;
 		# yum found, use it
-		if [ -n "$PATH_APTGET" ] ; then
+		if [ -n "$PATH_YUM" ] ; then
 			yum update || true;
 			yum install -y ${DEP} || true;
 		fi;
