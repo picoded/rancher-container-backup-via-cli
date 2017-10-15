@@ -18,4 +18,4 @@ S3_FILEPATH="${S3_WORKSPACE}/${S3_FILENAME}"
 # Run rest of the script from there
 #
 cd "${BACKUP_WORKSPACE}";
-rm -f "${BACKUP_FILEPATH}";
+#rm -f "${BACKUP_FILEPATH}";
