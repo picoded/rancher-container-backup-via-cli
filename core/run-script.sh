@@ -100,8 +100,8 @@ EXEC_SCRIPTNAME="S3${TEMPLATE_MODE}.sh"
 # RANCHER_EXEC_RUN_FLAGS="--privileged -i"
 RANCHER_EXEC_RUN_FLAGS="-i"
 
-if [ "${RUN_SHELL_AS_ROOT}" == "1" ] ; then
-	RANCHER_EXEC_RUN_FLAGS="-u 0 -i"
+if [ -n "${RUN_SHELL_AS_ROOT}" ] ; then
+	RANCHER_EXEC_RUN_FLAGS="-u=0 -i"
 fi
 
 # Removing any old backup/restore script
