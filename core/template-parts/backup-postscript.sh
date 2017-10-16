@@ -11,7 +11,7 @@ if [[ $(find "${BACKUP_FILEPATH}" -type f -size +5G 2>/dev/null) ]]; then
 	USE_S3CLI=1
 fi
 
-if [ "${USE_S3CLI}" == "1" ] ; then
+if [ -n "${USE_S3CLI}" ] ; then
 	#
 	# Use large size python multipart upload
 	#

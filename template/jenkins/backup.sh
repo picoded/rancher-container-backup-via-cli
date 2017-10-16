@@ -6,7 +6,7 @@
 #---------------------------------------
 
 # Nuke tmp files
-rm -R -f /tmp/*;
+rm -R -f /tmp/*.zip;
 
 # Ensure file path is jenkins workspace
 cd "${JENKINS_WORKSPACE}";
