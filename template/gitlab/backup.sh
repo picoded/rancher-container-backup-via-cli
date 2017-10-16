@@ -3,19 +3,15 @@
 # for - gitlab/gitlab-ces:latest
 #--------------------------------------
 
-# To create the gitlab backup itself (WARNING DELTES ALL OLD COPIES)
-# cd /var/opt/gitlab/backups/;
+# # Former backup cleanup
+rm -f *.tar;
 
-# Former backup cleanup
-# rm -f *.tar;
+# Actual backup
+trap 'gitlab-rake gitlab:backup:create' SIGTERM SIGINT SIGFPE SIGSTP EXIT SIGHUP SIGQUIT;
 
-# # Actual backup
-# gitlab-rake gitlab:backup:create;
-
-# # Wait for backup to finish
-# wait;
-
-# Upload of backup
+# Wait for completion
+wait < <(jobs -p);
 mv *_backup.tar gitlab-backup.tar;
 
-# rsync -ah --progress
+# Something for debugging
+echo ">> NOTE: gitlab-rake SHOULD finish before this message";
