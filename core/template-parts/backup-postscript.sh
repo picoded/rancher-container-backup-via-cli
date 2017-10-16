@@ -6,12 +6,12 @@ echo "S3Backup - completed backup file process"
 
 echo "S3Backup - starting upload";
 
-# UPLOAD using Python toolchain, if file size is larger then 4.9gb
-if [[ $(find "${BACKUP_FILEPATH}" -type f -size +4.9G 2>/dev/null) ]]; then
+# UPLOAD using Python toolchain, if file size is larger then 5gb
+if [[ $(find "${BACKUP_FILEPATH}" -type f -size +5G 2>/dev/null) ]]; then
 	USE_S3CLI=1
 fi
 
-if [[ -z $USE_S3CLI ]] ; then
+if [ "${USE_S3CLI}" == "1" ] ; then
 	#
 	# Use large size python multipart upload
 	#
@@ -29,6 +29,9 @@ if [[ -z $USE_S3CLI ]] ; then
 			yum update || true;
 			yum install -y python-pip || true;
 		fi;
+
+		# ensure pip command is setup
+		export PATH=$(which pip):$PATH;
 	fi;
 
 	# Upgrade pip

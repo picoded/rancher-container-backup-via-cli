@@ -25,3 +25,6 @@ export BACKUP_FILETYPE="application/x-compressed-zip"
 
 # Jenkins workspace
 export JENKINS_WORKSPACE=/var/jenkins_home
+
+# Run shell as root user (-u i)
+export RUN_SHELL_AS_ROOT=1
